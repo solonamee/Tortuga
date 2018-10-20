@@ -357,3 +357,13 @@ var oyun = [
 
         client.user.setGame(oyun[random], "https://www.youtube.com/Tortuga");
         }, 2 * 2500);
+
+client.on("guildMemberAdd", member => {
+
+  if (db.has(`otoR_${member.guild.id}`) === false) return;
+  var rol = member.guild.roles.get(db.fetch(`otoR_${member.guild.id}`));
+  if (!rol) return;
+  
+  member.addRole(rol)
+  
+})
